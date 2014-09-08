@@ -1,10 +1,13 @@
 package kanban.simba;
 
+import java.lang.Override;
 import java.util.Locale;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -123,8 +126,19 @@ public class SimbaActivity extends Activity {
         }
 
         @Override
+        public void onResume() {
+            super();
+            Canvas c = new Canvas();
+            c.drawCircle(50, 50, 10, new Paint());
+            this.getView().draw(c);
+        }
+
+        @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
+            Canvas c = new Canvas();
+            c.drawCircle(50, 50, 10, new Paint());
+            this.getView().draw(c);
             View rootView = inflater.inflate(R.layout.fragment_simba, container, false);
             return rootView;
         }
