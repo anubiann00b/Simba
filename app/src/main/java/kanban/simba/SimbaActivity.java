@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 public class SimbaActivity extends Activity {
 
     /**
@@ -37,8 +36,6 @@ public class SimbaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simba);
 
-
-
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
@@ -46,9 +43,7 @@ public class SimbaActivity extends Activity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,14 +57,10 @@ public class SimbaActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (item.getItemId() == R.id.action_settings)
             return true;
-        }
         return super.onOptionsItemSelected(item);
     }
-
-    
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -120,7 +111,7 @@ public class SimbaActivity extends Activity {
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         /**
-         * Returns a new instance of this fragment for the given section
+         * Returns a new instance of this fragment with the given section
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
@@ -131,9 +122,6 @@ public class SimbaActivity extends Activity {
             return fragment;
         }
 
-        public PlaceholderFragment() {
-        }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
@@ -141,5 +129,4 @@ public class SimbaActivity extends Activity {
             return rootView;
         }
     }
-
 }
