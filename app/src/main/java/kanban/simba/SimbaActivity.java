@@ -1,21 +1,21 @@
 package kanban.simba;
 
-import java.lang.Override;
-import java.util.Locale;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import java.util.Locale;
 
 public class SimbaActivity extends Activity {
 
@@ -106,7 +106,7 @@ public class SimbaActivity extends Activity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends ListFragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -126,20 +126,20 @@ public class SimbaActivity extends Activity {
         }
 
         @Override
-        public void onResume() {
-            super();
-            Canvas c = new Canvas();
-            c.drawCircle(50, 50, 10, new Paint());
-            this.getView().draw(c);
+        public void onCreate(Bundle saveState) {
+            super.onCreate(saveState);
+            String[] values = new String[] { "Message1", "Message2", "Message3" };
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_list_item_1, values);
+            setListAdapter(adapter);
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            Canvas c = new Canvas();
-            c.drawCircle(50, 50, 10, new Paint());
-            this.getView().draw(c);
             View rootView = inflater.inflate(R.layout.fragment_simba, container, false);
+            View tv = rootView.findViewById(R.id.pager);
+            ((TextView)tv).setText("Fragment #");
             return rootView;
         }
     }
